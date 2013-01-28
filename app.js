@@ -17,7 +17,7 @@ function sendMail(mailOptions, req, res) {
   smtpTransport.sendMail(mailOptions, function(error, response) {
       if (error) {
           console.log(error);
-          res.send(error);
+          res.send({ error: error.name, msg: error.data });
       } else {
           console.log("Message sent: " + response.message);
           res.send({ msg: response.message });
